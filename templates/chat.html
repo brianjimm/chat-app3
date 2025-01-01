@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Chat</title>
+</head>
+<body>
+    <h1>Chat Room</h1>
+    <form method="POST" action="{{ url_for('send_message') }}">
+        <input type="text" name="content" placeholder="Type your message..." required>
+        <button type="submit">Send</button>
+    </form>
+    <div>
+        {% for message in messages %}
+            <p>{{ message.content }}</p>
+        {% endfor %}
+    </div>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+      </html>
